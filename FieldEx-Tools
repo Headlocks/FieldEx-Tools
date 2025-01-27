@@ -1,3 +1,7 @@
+add the server repository to /etc/apt/sources.list
+
+-----------------------------------------------------------------------------------------
+
 Cyber Chef
 
 https://github.com/gchq/CyberChef/releases
@@ -105,3 +109,53 @@ mv the package to the folder
 sudo dpkg -i <package.deb>
 
 ------------------------------------------------------------------------------------------------
+
+sudo apt install
+
+aircrack-ng
+
+netdiscover
+
+curl
+
+hydra
+
+nmap
+
+dirb
+
+gobuster
+
+dirbuster
+
+cewl
+
+nano
+
+vim
+
+python3
+
+smbclient
+
+enum4linux
+
+linpeas
+
+winpeas
+
+base64
+
+xxd
+
+exiftool
+
+steghide
+
+wireshark
+
+tcpdump
+
+netcat
+
+
