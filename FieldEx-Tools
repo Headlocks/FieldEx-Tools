@@ -27,8 +27,6 @@ nano ~/Desktop/cyberchef.desktop
 
 chmod +x ~/Desktop/cyberchef.desktop
 
-
-
 -------------------------------------------------------------------------------------------
 
 Steganography
@@ -65,6 +63,8 @@ pyGTFO bins
 
 https://github.com/WizzzStark/PyGTFO
 
+mkdir pyGTFO
+
 git clone https://github.com/WizzzStark/PyGTFO 
 
 python3 pyGTFO.py -b [BINARY] -p [PRIVILEGE]
@@ -92,6 +92,16 @@ add new templates
 
 ------------------------------------------------------------------------------------------------------
 
+OnlyOffice
 
-only office 
+https://www.onlyoffice.com/download-desktop.aspx
 
+download the debian package
+
+mkdir OnlyOffice
+
+mv the package to the folder
+
+sudo dpkg -i <package.deb>
+
+------------------------------------------------------------------------------------------------
