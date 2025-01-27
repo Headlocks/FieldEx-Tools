@@ -122,9 +122,17 @@ wget
 
 hydra
 
+burpsuite
+
+wordlists
+
+ghidra
+
 john (the ripper)
 
 nmap
+
+sqlitebrowser
 
 dirb
 
@@ -162,4 +170,24 @@ tcpdump
 
 netcat
 
+wifite
 
+hexdump
+
+hashcat
+
+hcxdumptool
+
+hcxpcapngtool
+
+macchanger
+
+bully
+
+gpsd
+
+exploitdb
+
+metasploitframework
+
+msfconsole
