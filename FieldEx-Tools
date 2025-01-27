@@ -88,7 +88,11 @@ https://github.com/WizzzStark/PyGTFO
 
 mkdir pyGTFO
 
+or
+
 git clone https://github.com/WizzzStark/PyGTFO 
+
+sudo apt install python3-colorama
 
 python3 pyGTFO.py -b [BINARY] -p [PRIVILEGE]
 
