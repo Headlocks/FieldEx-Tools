@@ -1,0 +1,97 @@
+Cyber Chef
+
+https://github.com/gchq/CyberChef/releases
+
+download it
+
+mkdir CyberChef
+
+mv zip file to CyberChef directory
+
+unzip it
+
+
+right click cyberchef.html file and send create a desktop link
+
+or
+
+
+nano ~/Desktop/cyberchef.desktop
+  [Desktop Entry]
+  Name=CyberChef
+  Comment=Run CyberChef offline
+  Exec=firefox /home/<user>/CyberChef/<cybercheffile>.html
+  Icon=utilities-terminal
+  Terminal=false
+  Type=Application
+
+chmod +x ~/Desktop/cyberchef.desktop
+
+
+
+-------------------------------------------------------------------------------------------
+
+Steganography
+
+https://github.com/stylesuxx/steganography
+
+download it
+
+mkdir Steganography
+
+mv zip file to Steganography
+
+unzip it
+
+right click index.html file and send create a desktop link. change the name.
+
+
+or
+
+nano ~/Desktop/steganography.desktop
+  [Desktop Entry]
+  Name=CyberChef
+  Comment=Run Steganography offline
+  Exec=firefox /home/<user>/Steganography/steganography-gh-pages/<stegfile>.html
+  Icon=utilities-terminal
+  Terminal=false
+  Type=Application
+
+chmod +x ~/Desktop/steganography.desktop
+
+--------------------------------------------------------------------------------------------------------
+
+pyGTFO bins
+
+https://github.com/WizzzStark/PyGTFO
+
+git clone https://github.com/WizzzStark/PyGTFO 
+
+python3 pyGTFO.py -b [BINARY] -p [PRIVILEGE]
+
+-m for menu
+
+show all techniques for cat
+python3 pyGTFO.py -b cat -lp
+
+specify technique for cat
+python pyGTFO.py -b cat -p sudo
+
+-------------------------------------------------------------------------------------------------
+
+Draw.io
+
+https://github.com/jgraph/drawio-desktop/releases/
+
+right click draw.io exe and send to desktop
+
+/draw.io/opt/draw.io  
+
+add new templates
+  - networking
+
+------------------------------------------------------------------------------------------------------
+
+
+only office 
+
