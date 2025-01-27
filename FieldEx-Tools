@@ -104,6 +104,8 @@ Draw.io
 
 https://github.com/jgraph/drawio-desktop/releases/
 
+mkdir Drawio 
+
 right click draw.io exe and send to desktop
 
 /draw.io/opt/draw.io  
