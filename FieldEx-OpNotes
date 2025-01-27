@@ -43,3 +43,10 @@ output all nmap files (xml, nmap, gnmap)
 
 create a html easy to read nmap file for products
   xsltproc <nmap.xml> -o <output.html>
+
+ruby guides pingsweeps
+  linux
+  for i in {1..254} ;do (ping -c 1 192.168.1.$i | grep "bytes from" &) ;done
+  windows
+  for /L %i in (1,1,255) do @ping -n 1 -w 200 192.168.1.%i > nul && echo 192.168.1.%i is up.
+
