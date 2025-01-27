@@ -1,5 +1,22 @@
 add the server repository to /etc/apt/sources.list
 
+sudo apt update -y && sudo apt upgrade -y && sudo apt dist-upgrade -y
+
+sudo apt autoremove
+
+sudo apt clean
+
+----------------------------------------------------------------------------------------
+
+blacklist the bluetooth module for the alfa cards
+
+cd /etc/modprobe.d/
+
+nano blacklist.conf
+
+blacklist btusb
+blacklist bluetooth
+
 -----------------------------------------------------------------------------------------
 
 Cyber Chef
