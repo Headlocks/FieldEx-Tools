@@ -50,3 +50,10 @@ ruby guides pingsweeps
   windows
   for /L %i in (1,1,255) do @ping -n 1 -w 200 192.168.1.%i > nul && echo 192.168.1.%i is up.
 
+pyGTFO techniques
+  python3 pyGTFO.py -b [BINARY] -p [PRIVILEGE]
+    -m for menu
+  show all techniques for cat
+    python3 pyGTFO.py -b cat -lp
+  specify technique for cat
+    python pyGTFO.py -b cat -p sudo
