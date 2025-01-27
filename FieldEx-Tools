@@ -118,7 +118,11 @@ netdiscover
 
 curl
 
+wget
+
 hydra
+
+john (the ripper)
 
 nmap
 
