@@ -57,3 +57,10 @@ pyGTFO techniques
     python3 pyGTFO.py -b cat -lp
   specify technique for cat
     python pyGTFO.py -b cat -p sudo
+
+Adding a CNAME / DNS name to your /etc/hosts
+  check website certificates or if the ip resolves its self to a FQDN, add it into your /etc/hosts
+  <ip> <google.com>
+
+SQL Injection
+    <place holder>
