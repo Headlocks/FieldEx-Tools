@@ -213,9 +213,7 @@ gpsd
 
 exploitdb
 
-metasploitframework
-
-msfconsole
+metasploit-framework
 
 proxychains
 
@@ -230,3 +228,5 @@ xsltproc
 terminator
 
 kismet
+
+exiftool
