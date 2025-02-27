@@ -81,7 +81,7 @@ nano ~/Desktop/steganography.desktop
 chmod +x ~/Desktop/steganography.desktop
 
 --------------------------------------------------------------------------------------------------------
-
+>>>>>>>>NEW METHOD FOUND DO NOT NEED PYGTFO<<<<<<<<
 pyGTFO bins
 
 https://github.com/WizzzStark/PyGTFO
@@ -106,8 +106,17 @@ python pyGTFO.py -b cat -p sudo
 
 -------------------------------------------------------------------------------------------------
 
+GTFOBINS
+
+downloads the entire gtfobins page localy
+wget -r -np -k https://gtfobins.github.io/
+go into the gui folder for gtfobins
+right click index.html
+send to desktop
 Draw.io
 
+
+-------------------------------------------------
 https://github.com/jgraph/drawio-desktop/releases/
 
 mkdir Drawio 
@@ -230,3 +239,5 @@ terminator
 kismet
 
 exiftool
+
+vscode
