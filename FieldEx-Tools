@@ -81,28 +81,12 @@ nano ~/Desktop/steganography.desktop
 chmod +x ~/Desktop/steganography.desktop
 
 --------------------------------------------------------------------------------------------------------
->>>>>>>>NEW METHOD FOUND DO NOT NEED PYGTFO<<<<<<<<
-pyGTFO bins
+Start SSH service
 
-https://github.com/WizzzStark/PyGTFO
+sudo systemctl start ssh.service
+sudo systemctl enable ssh.service
 
-mkdir pyGTFO
-
-or
-
-git clone https://github.com/WizzzStark/PyGTFO 
-
-sudo apt install python3-colorama
-
-python3 pyGTFO.py -b [BINARY] -p [PRIVILEGE]
-
--m for menu
-
-show all techniques for cat
-python3 pyGTFO.py -b cat -lp
-
-specify technique for cat
-python pyGTFO.py -b cat -p sudo
+allows you to SCP to yourself
 
 -------------------------------------------------------------------------------------------------
 
