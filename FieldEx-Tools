@@ -97,10 +97,11 @@ wget -r -np -k https://gtfobins.github.io/
 go into the gui folder for gtfobins
 right click index.html
 send to desktop
-Draw.io
-
 
 -------------------------------------------------
+
+draw.io
+
 https://github.com/jgraph/drawio-desktop/releases/
 
 mkdir Drawio 
