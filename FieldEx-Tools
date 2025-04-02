@@ -33,22 +33,7 @@ mv zip file to CyberChef directory
 
 unzip it
 
-
-right click cyberchef.html file and send create a desktop link
-
-or
-
-
-nano ~/Desktop/cyberchef.desktop
-  [Desktop Entry]
-  Name=CyberChef
-  Comment=Run CyberChef offline
-  Exec=firefox /home/<user>/CyberChef/<cybercheffile>.html
-  Icon=utilities-terminal
-  Terminal=false
-  Type=Application
-
-chmod +x ~/Desktop/cyberchef.desktop
+right click the .html file and send to desktop
 
 -------------------------------------------------------------------------------------------
 
@@ -65,20 +50,6 @@ mv zip file to Steganography
 unzip it
 
 right click index.html file and send create a desktop link. change the name.
-
-
-or
-
-nano ~/Desktop/steganography.desktop
-  [Desktop Entry]
-  Name=CyberChef
-  Comment=Run Steganography offline
-  Exec=firefox /home/<user>/Steganography/steganography-gh-pages/<stegfile>.html
-  Icon=utilities-terminal
-  Terminal=false
-  Type=Application
-
-chmod +x ~/Desktop/steganography.desktop
 
 --------------------------------------------------------------------------------------------------------
 Start SSH service
@@ -106,9 +77,9 @@ https://github.com/jgraph/drawio-desktop/releases/
 
 mkdir Drawio 
 
-right click draw.io exe and send to desktop
+mv the package to the folder
 
-/draw.io/opt/draw.io  
+sudo dpkg -i <package.deb
 
 add new templates
   - networking
