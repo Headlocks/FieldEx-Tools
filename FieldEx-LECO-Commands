@@ -1,0 +1,390 @@
+A Host-Based Security Solution refers to security measures implemented directly on individual devices (hosts), such as servers, workstations, laptops, and mobile devices, to protect them from cyber threats. Unlike network-based security solutions, which monitor and protect the entire network, host-based solutions are specifically focused on securing the endpoint or device itself. These solutions are typically software-based and work to detect, block, and respond to potential threats in real-time or on-demand.
+HIDS is useful for detecting suspicious behavior on individual hosts, but it does not actively prevent attacks and may generate false alarms.
+HIPS goes a step further by actively preventing attacks, making it a more proactive solution but with potential performance costs and configuration challenges.
+Anti-Virus is a staple in malware protection, especially for known threats, but it may struggle with new, unknown malware unless updated regularly.
+An Enterprise Security Solution is a comprehensive suite of security tools and systems designed to protect an organization’s entire IT infrastructure, including its networks, servers, endpoints, and applications. These solutions are built to defend against a wide array of cyber threats, such as malware, data breaches, and denial-of-service (DoS) attacks, while ensuring that critical business functions remain operational.
+Enterprise security often involves network-based security systems, which monitor and protect network traffic across the organization, as well as host-based solutions that protect individual devices. In this context, three common components are NIDS, NIPS, and Anti-Virus (which can be used at the network level as well as on individual devices).
+NIDS focuses on detecting network-based threats and provides visibility across the entire network, but cannot actively prevent or mitigate those threats.
+NIPS takes the capabilities of NIDS a step further by actively blocking malicious traffic, offering proactive defense but introducing potential network latency and false positives.
+Anti-virus solutions offer endpoint protection by detecting and removing known malware but struggle with emerging threats and may slow down endpoint performance.
+Benefits of SSH:
+Strong encryption and secure authentication for remote system management.
+Supports file transfers (SFTP, SCP), port forwarding, and remote command execution.
+Cross-platform compatibility and centralized access control.
+Risks of SSH:
+Vulnerable to brute-force attacks if weak passwords are used.
+Security risks with poor SSH key management or key theft.
+Potential for man-in-the-middle attacks if server verification is ignored.
+Misconfiguration leading to excessive permissions or unrestricted access.
+SHELL COMMANDS
+Sending shell commands over unencrypted lines exposes an organization to significant security risks, everything shown in plain text and including:
+Eavesdropping (interception of sensitive data)
+Man-in-the-Middle (MitM) Attacks (manipulation of commands)
+Credential Hijacking (compromise of usernames and passwords)
+Tampering (modification of commands or responses)
+Replay Attacks (reusing captured commands)
+
+SSHD CONFIGURING
+	Sudo apt install ssh
+	Service ssh status
+	Service ssh start
+	/etc/ssh/sshd_config
+		permitrootlogin no
+		pubkeyauthentication – remove the comment and to say yes
+		password authentication – no
+		could change port number and remove x11
+		sudo service ssh restart
+	sudo ufw allow 22/tcp
+	cd .ssh
+	ssh-keygen -t rsa -b 4096
+	cp name.pub key created
+	scp name.pub user@ip:/home/user/.ssh/authorized_keys/name.pub:
+	on target public profile needs .ssh/authorized_keys/
+	ssh -i .ssh/vpn (not the .pub) user@ip (-p ssh port)
+	
+STANDARD SITUATIONAL AWARENESS COMMANDS/ DEFAULT SURVEY
+LINUX	
+history
+sysinfo	
+uname -a
+hostnamectl
+ifconfig
+ip a
+netstat -tuln
+ps -elf / ps aux
+whoami
+w
+who
+last
+lastlog
+sudo ufw status
+tail -f /var/log/syslog
+sudo iptables -L
+
+WINDOWS
+history
+systeminfo
+hostname
+ipconfig /all
+netstat -ano
+tasklist
+whoami
+
+SCP (Secure Copy Protocol)
+
+SCP is a network protocol used to securely transfer files between hosts on a network. It uses SSH (Secure Shell) to provide a secure channel for communication, ensuring that the files are encrypted.
+
+Scp filename user@ipaddress:/home/kali/location/<file name>
+scp user@ipaddress:/home/kali/location/<file name> .
+
+Positive: has encryption
+Negative: slower due to encryption and decryption
+
+
+FTP (File Transfer Protocol)
+
+Ftp <ip address>
+Positive: faster than scp with less overhead
+Negative: No encryption
+
+HASHES
+
+Md5sum <file>
+Generates MD5 (Message digest algorithm 5) hash value. 128-bit (16 byte) output, represented in 32-character hexadecimal
+	
+Sha1sum <file>
+Generates a sha-1 (secure hash algorithm 1) hash value.l produces a 160-bit (20-byte) hash value, displayed as 40-character hexadecimal.
+
+ZIPPING/COMPRESSION
+
+Tar (tape archive) command is used for archiving files. Can combine multiple files into a single file (archive). It can also compress the archive file.
+Without compression
+Tar –cf archive.tar file.txt file2.txt
+With compression	
+Tar –czf archive.tar.gz file1.txt file2.txt 
+Extract an archive
+Tar –xf archive.tar
+Extract a compressed archive
+Tar –xzf archive.tar.gz
+List contents
+Tar –tf archive.tar
+
+Zip command is used for compresssing files and directories into a single .zip archive. Unlike tar, the zip command compresses files by default.
+Zip archive.zip file1.txt file2.txt
+Zip –r (recursvie) zip -9 (maximum compression) zip –e (add zip password), unzip –l (list files)
+Unzip archive.zip
+
+CRYPTOGRAPHIC TOOLS
+
+OPENSSL
+	Open source toolkit that implements the SSL (Secure Sockets Layer) and TSL (Transport Layer Security) protocols, along with cryptographic functions and algorithms.
+Generates certificates, encryption keys, and perform encryption/decryption
+Generate a private key
+openssl genpkey -algorithm RSA -out private.key
+Generate a public key from a private key
+openssl rsa -pubout -in private.key -out public.key
+Encrypt a file
+openssl enc -aes-256-cbc -in file.txt -out file.enc
+Decrypt a file
+openssl enc -d -aes-256-cbc -in file.enc -out file.txt
+2. GPG (GNU Privacy Guard)
+
+GPG (or GnuPG) is an open-source implementation of the OpenPGP standard (RFC 4880). GPG is primarily used for encrypting and signing data to provide confidentiality, integrity, and authenticity. It is often used for email encryption and file signing, enabling secure communication and data storage.
+GPG uses a public-private key system, where users generate key pairs (one public and one private key) to securely encrypt and sign messages or files.
+Primary Uses of GPG:
+Email Encryption: Encrypts emails to ensure only the intended recipient can read them.
+File Encryption and Signing: Encrypts and signs files, ensuring the confidentiality and integrity of the file.
+Public Key Infrastructure: Allows users to share their public keys, and others can encrypt data for them, knowing only the private key can decrypt it.
+Digital Signatures: GPG is widely used for signing files and messages to prove authenticity and verify that they haven’t been tampered with.
+Common GPG Commands:
+Generate a Key Pair (Public & Private):
+gpg --gen-key
+Generates a new GPG key pair (public and private keys).
+List Keys in Keyring:
+gpg --list-keys
+Displays all the public keys stored in your keyring.
+Encrypt a File with a Recipient’s Public Key:
+gpg --encrypt --recipient recipient@example.com file.txt 
+Encrypts file.txt using the recipient's public key.
+Decrypt a File with Your Private Key:
+gpg --decrypt file.txt.gpg
+Decrypts file.txt.gpg using your private key.
+Sign a File:
+gpg --sign file.txt
+Signs the file file.txt to confirm its authenticity.
+Verify a Signed File:
+gpg --verify file.txt.sig file.txt
+Verifies the signature on file.txt using the .sig file.
+Export a Public Key:
+gpg --export -a recipient@example.com > public.key 
+Exports your public key in ASCII-armored format.
+Import a Public Key:
+gpg --import public.key 
+Imports a public key into your keyring.
+
+PERMISSIONS
+Chmod (change mode) change permissions of a file or a directory. 
+4 Read, 2 Write, 1 eXecute
+Owner (User), Group, Others
+chmod u+x file.txt
+chmod 755 file.txt
+chmod 777 file.txt
+chmod +x script.sh
+chmod -R 755 directory
+
+Chown
+	Used to change the owneriship of a file or a directory. Modify8 the user and/or group associated with a file or directory.
+
+Change ownership to a specific user
+Chown alice file.txt
+Change ownership to a specific user and group
+Chown alice:staff file.txt
+Change only the group of a file
+Chown :staff file.txt
+chown -R alice:staff /home/alice
+chown 1001:1001 file.txt
+
+
+SU / SUDO
+Su (substitute User)
+	Switch the current user to another user account
+Su john 
+Su -
+Su –c ‘command’
+
+Sudo (superuser do)
+Can execute a command as the root user or another user, as specificed in /etc/sudoers file. 
+Sudo –u john ls /home/john
+Sudo apt update
+Sudo -v
+
+IP / IFCONFIG
+
+Ip (manage linux networking. Considered more modern and flexible compared to ifconfig)
+Ip link show (show all net interfaces)
+Ip addr show (show ip addresses of all interfaces)
+Ip route (show)
+Ip link set eth0 up, ip link set eth0 down
+Ip addr add 192.168.1.10/24 dev eth0
+Ip addr del 192.168.1.10/24 dev eth0
+Ip –s link show
+Ip route add 192.168.2.0/24 via 192.168.1.1
+Ip route del 192.168.2.0/24
+
+Ifconfig (an older utility used to configure network interfaces in linux, has been depricated to ip command)
+Ifconfig
+Ifconfig eth0
+Ifconfig eth0 up
+Ifconfig eth0 192.168.1.10 netmask 255.255.255.0
+Ifconfig eth0
+Ifconfig eth0 promisc (enable/disable promiscuous mode)
+Ifconfig eth0 -promisc 
+NFS (Network File System)
+	A protocol that allows file systems to be shared over a network. It enables a computer (the client) to access files on a remote computer (the server) as if they were on its local system. NFS is common on linux for sharing files between computers.
+NFS Server: the machine sharing its file system
+NFS Client: The machine accessing the shared file system
+
+“exports” is a file system accessible by the clients. This is done by modifying /etc/exports on the sserver to specify which directories are shared and which clients can access them.
+
+SERVER SIDE
+Sudo apt install nfs-kernel-server
+Sudo nano /etc/exports
+/srv/nfs 192.168.1.0/24(rw,synce,no_subtree_check)
+Sudo exportfs –a
+Sudo systemctl start nfs-kernel-server
+Sudo systemctl enable nfs-kernel-server
+Sudo exportfs –v (check exported directories for verification)
+
+CLIENT SIDE
+Sudo apt install nfs-common
+Sudo mkdir –p /mnt/nfs
+Sudo mount 192.168.1.000:/srv/nfs /mnt/nfs
+Mount | grep nfs (check the mounted NFS share) or df –h
+Automating
+Sudo nano /etc/fstab
+192.168.1.100:/srv/nfs /mnt/nfs nfs defaults 0 0
+unmounting
+Sudo umount /mnt/nfs
+Sudo umount –f /mnt/nfs
+
+RUNNING A SCRIPT
+
+Chmod +x <file name>
+./<script>
+Or 
+Python3 <script.py>
+	#!/usr/bin/env python3
+Bash <script.sh>
+	#!/bin/bash
+
+MARKUP LANGUAGE
+
+HTML (Hypertext Markup Language)
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sample Web Page</title>
+  </head>
+  <body>
+    <h1>Welcome to My Website</h1>
+    <p>This is a sample web page.</p>
+    <a href="https://www.example.com">Click Here</a>
+  </body>
+</html>
+
+VPN’S
+
+OpenVPN
+sudo apt install openvpn
+
+get help for this one
+
+SSH REDIRECT
+local
+ssh -L local_port:remote_host:remote_port user@ssh_server
+ssh -L 8080:remote_host:80 user@ssh_server
+
+remote
+ssh -R remote_port:local_host:local_port user@ssh_server
+ssh -R 9090:localhost:3000 user@ssh_server
+
+IPTABLES
+port forwarding
+forward incoming port on the external device to an internal ip address and port
+sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j DNAT --to-destination 192.168.1.100:80
+allow the forwarded traffic
+sudo iptables -A FORWARD -p tcp -d 192.168.1.100 --dport 80 -j ACCEPT
+enable NAT for outgoing packets
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+SSH PROXY REDIRECTION
+
+SOCKS Proxy via ssh
+ssh -D 1080 -C -q -N user@ssh_server
+Using the Proxy
+curl --socks5 127.0.0.1:1080 http://example.com
+port forwarding
+ssh -L 8080:target_host:80 user@ssh_server
+ssh proxy command (for chaining ssh througha proxy server)
+.ssh/config
+	Host target_host
+  		ProxyCommand ssh -q -W %h:%p user@ssh_server
+
+PING
+
+ping command relies on ICMP to check whether a device on a network is reachable and to measure round-trip time
+
+ping uses ICMP Echo Request and ICMP Echo Reply
+sometimes firewalls have ICMP blocked
+ping <ip address> 
+
+TRACEROUTE
+network diagnostic tool that traces the path packets take from your computer to a remote host across an IP network. 
+traceroute <options> <ip/fqdn>
+ SAT Hops
+	sat hops can be seen around 500.000 ms
+	can compromise us if a satellite is being utilized due to us leaving behind our footprints
+
+DNS
+the computer sends a DNS query to the DNS server. The DNS server checks its stored cache before asking another dns server. 
+If you already visited a website, your computer stores the results in its local DNS cache. The computer looks at this cache before conducting a query to quickly access the website.
+dns reverse lookup: uses an ip address to resolve a FQDN rather than a FQDN to resolve an IP
+dig
+dns query tool
+dig google.com
+dig google.com MX
+dig @8.8.8.8 google.com
+nslookup 
+nslookup google.com
+nslookup -query=mx google.com
+
+ARP
+
+devices on same local network
+translates an IP address into a physical mac address
+arp cache
+arp -a
+
+NMAP
+
+nmap -sS -Pn -T4 -O <ip address/xx> -oA
+
+banner grab
+nmap –script=banner <ip address> 
+
+-A service version, os deteciton, scrip scanning, tracerout
+-sV service version
+-O os detection
+
+tunnels
+ssh -L 9999:192.168.1.100:22 user@ssh.server.com
+
+TTL’S
+
+
+
+BANNER GRAB
+
+nc <ip address> <port>
+
+PACKET SNIFFING
+
+wireshark
+
+tcpdump
+tcpdump src <ip address>
+tcpdump dst <ipaddress>
+any traffic to or from a spcific ip
+tcpdump host <ipaddress>
+tcpdump port <port>
+tcpdump net <ipaddress/24>
+tcpdump src host 192.168.1.1 and src port 80
+tcpdump -i eth0
+write to a pcap
+tcpdump -w capture_file.pcap
+read a saved capture
+tcpdump -r capture_file.pcap
+tcpdump src 192.168.1.1 and port 80
+tcpdump 'tcp[tcpflags] & tcp-syn != 0'
+tcpdump port 80 or port 443
