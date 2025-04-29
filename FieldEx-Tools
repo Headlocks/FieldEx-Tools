@@ -203,3 +203,5 @@ sqlmap
 wireguard
 
 openvpn
+
+sqlite3
