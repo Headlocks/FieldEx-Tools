@@ -1,0 +1,34 @@
+Here’s a one-liner script that safely pins Kali packages so they won’t automatically upgrade your Debian system:
+
+✅ One-liner to Add APT Pinning for Kali:
+
+echo -e "Package: *\nPin: release a=kali-rolling\nPin-Priority: 50" | sudo tee /etc/apt/preferences.d/kali.pref > /dev/null
+
+
+⸻
+
+🔍 What this does:
+	•	Creates /etc/apt/preferences.d/kali.pref
+	•	Sets priority 50 for anything from kali-rolling
+	•	Prevents APT from auto-upgrading or installing Kali packages unless you explicitly say so
+
+⸻
+
+✅ Test it worked:
+
+cat /etc/apt/preferences.d/kali.pref
+
+You should see:
+
+Package: *
+Pin: release a=kali-rolling
+Pin-Priority: 50
+
+
+⸻
+
+Now you’re safe: you can run sudo apt update && sudo apt upgrade and it won’t overwrite Debian packages with Kali versions unless you explicitly do:
+
+sudo apt install <package> -t kali-rolling
+
+Let me know if you’d like a similar script to remove the Kali repo later if needed.
