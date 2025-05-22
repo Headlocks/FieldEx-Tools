@@ -39,6 +39,7 @@ This creates a virtual environment under /opt/katoolin3/ and installs necessary 
 Once installed, launch it with:
 
 sudo katoolin3
+or python3 katoolin3.py
 
 You’ll see a menu like this:
 
@@ -54,6 +55,8 @@ Use the menu to:
 	•	Add Kali repos safely
 	•	Choose specific categories (wireless, web, exploitation, etc.)
 	•	Install entire tool groups or individual tools
+
+install kali-menu
 
 ⸻
 
