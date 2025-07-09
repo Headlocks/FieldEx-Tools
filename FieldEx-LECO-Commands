@@ -198,205 +198,228 @@ PERMISSIONS
 
 
 SU / SUDO
-Su (substitute User)
-	Switch the current user to another user account
-Su john 
-Su -
-Su –c ‘command’
+	
+	su (substitute User)
 
-Sudo (superuser do)
-Can execute a command as the root user or another user, as specificed in /etc/sudoers file. 
-Sudo –u john ls /home/john
-Sudo apt update
-Sudo -v
+	Switch the current user to another user account
+	Su john 
+	Su - (provides full user environment with the -)
+
+	Sudo (superuser do)
+
+	Can execute a command as the root user or another user, as specificed in /etc/sudoers file. 
+	sudo nano file.txt
+	Sudo –u john ls /home/john
+
 
 IP / IFCONFIG
 
-Ip (manage linux networking. Considered more modern and flexible compared to ifconfig)
-Ip link show (show all net interfaces)
-Ip addr show (show ip addresses of all interfaces)
-Ip route (show)
-Ip link set eth0 up, ip link set eth0 down
-Ip addr add 192.168.1.10/24 dev eth0
-Ip addr del 192.168.1.10/24 dev eth0
-Ip –s link show
-Ip route add 192.168.2.0/24 via 192.168.1.1
-Ip route del 192.168.2.0/24
+	Ip (manage linux networking. Considered more modern and flexible compared to ifconfig)
+	Ip link show (show all net interfaces)
+	Ip addr show (show ip addresses of all interfaces)
+	Ip route (show)
+	Ip link set eth0 up, ip link set eth0 down
+	Ip addr add 192.168.1.10/24 dev eth0
+	Ip addr del 192.168.1.10/24 dev eth0
+	Ip –s link show
+	Ip route add 192.168.2.0/24 via 192.168.1.1
+	Ip route del 192.168.2.0/24
+	
+	Ifconfig (an older utility used to configure network interfaces in linux, has been depricated to ip command)
+	Ifconfig
+	Ifconfig eth0
+	Ifconfig eth0 up
+	Ifconfig eth0 192.168.1.10 netmask 255.255.255.0
+	Ifconfig eth0
+	Ifconfig eth0 promisc (enable/disable promiscuous mode)
+	Ifconfig eth0 -promisc 
 
-Ifconfig (an older utility used to configure network interfaces in linux, has been depricated to ip command)
-Ifconfig
-Ifconfig eth0
-Ifconfig eth0 up
-Ifconfig eth0 192.168.1.10 netmask 255.255.255.0
-Ifconfig eth0
-Ifconfig eth0 promisc (enable/disable promiscuous mode)
-Ifconfig eth0 -promisc 
 NFS (Network File System)
+	
 	A protocol that allows file systems to be shared over a network. It enables a computer (the client) to access files on a remote computer (the server) as if they were on its local system. NFS is common on linux for sharing files between computers.
-NFS Server: the machine sharing its file system
-NFS Client: The machine accessing the shared file system
+	NFS Server: the machine sharing its file system
+	NFS Client: The machine accessing the shared file system
 
-“exports” is a file system accessible by the clients. This is done by modifying /etc/exports on the sserver to specify which directories are shared and which clients can access them.
+	“exports” is a file system accessible by the clients. This is done by modifying /etc/exports on the sserver to specify which directories are shared and which clients can access them.
 
-SERVER SIDE
-Sudo apt install nfs-kernel-server
-Sudo nano /etc/exports
-/srv/nfs 192.168.1.0/24(rw,synce,no_subtree_check)
-Sudo exportfs –a
-Sudo systemctl start nfs-kernel-server
-Sudo systemctl enable nfs-kernel-server
-Sudo exportfs –v (check exported directories for verification)
+	SERVER SIDE
+	Sudo apt install nfs-kernel-server
+	Sudo nano /etc/exports
+	/srv/nfs 192.168.1.0/24(rw,synce,no_subtree_check)
+	Sudo exportfs –a
+	Sudo systemctl start nfs-kernel-server
+	Sudo systemctl enable nfs-kernel-server
+	Sudo exportfs –v (check exported directories for verification)
 
-CLIENT SIDE
-Sudo apt install nfs-common
-Sudo mkdir –p /mnt/nfs
-Sudo mount 192.168.1.000:/srv/nfs /mnt/nfs
-Mount | grep nfs (check the mounted NFS share) or df –h
-Automating
-Sudo nano /etc/fstab
-192.168.1.100:/srv/nfs /mnt/nfs nfs defaults 0 0
-unmounting
-Sudo umount /mnt/nfs
-Sudo umount –f /mnt/nfs
+	CLIENT SIDE
+	Sudo apt install nfs-common
+	Sudo mkdir –p /mnt/nfs
+	Sudo mount 192.168.1.000:/srv/nfs /mnt/nfs
+	Mount | grep nfs (check the mounted NFS share) or df –h
+	Automating
+	Sudo nano /etc/fstab
+	192.168.1.100:/srv/nfs /mnt/nfs nfs defaults 0 0
+	unmounting
+	Sudo umount /mnt/nfs
+	Sudo umount –f /mnt/nfs
 
 RUNNING A SCRIPT
 
-Chmod +x <file name>
-./<script>
-Or 
-Python3 <script.py>
-	#!/usr/bin/env python3
-Bash <script.sh>
-	#!/bin/bash
+	Chmod +x <file name>
+	./<script>
+	Or 
+	Python3 <script.py>
+		#!/usr/bin/env python3
+	Bash <script.sh>
+		#!/bin/bash
 
 MARKUP LANGUAGE
 
-HTML (Hypertext Markup Language)
+	HTML (Hypertext Markup Language)
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Sample Web Page</title>
-  </head>
-  <body>
-    <h1>Welcome to My Website</h1>
-    <p>This is a sample web page.</p>
-    <a href="https://www.example.com">Click Here</a>
-  </body>
-</html>
+	<html>
+	  <head>
+	    <title>Sample Web Page</title>
+	  </head>
+	  <body>
+	    <h1>Welcome to My Website</h1>
+	    <p>This is a sample web page.</p>
+	    <a href="https://www.example.com">Click Here</a>
+	  </body>
+	</html>
+
 
 VPN’S
 
-OpenVPN
-sudo apt install openvpn
+	OpenVPN
+	sudo apt install openvpn
 
-get help for this one
+	wireguard
+	sudo apt install wireguard
 
 SSH REDIRECT
-local
-ssh -L local_port:remote_host:remote_port user@ssh_server
-ssh -L 8080:remote_host:80 user@ssh_server
+	
+	local
+	ssh -L local_port:remote_host:remote_port user@ssh_server
+	ssh -L 8080:remote_host:80 user@ssh_server
 
-remote
-ssh -R remote_port:local_host:local_port user@ssh_server
-ssh -R 9090:localhost:3000 user@ssh_server
+	remote
+	ssh -R remote_port:local_host:local_port user@ssh_server
+	ssh -R 9090:localhost:3000 user@ssh_server
 
 IPTABLES
-port forwarding
-forward incoming port on the external device to an internal ip address and port
-sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j DNAT --to-destination 192.168.1.100:80
-allow the forwarded traffic
-sudo iptables -A FORWARD -p tcp -d 192.168.1.100 --dport 80 -j ACCEPT
-enable NAT for outgoing packets
-sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+
+	port forwarding
+	forward incoming port on the external device to an internal ip address and port
+	sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j DNAT --to-destination 192.168.1.100:80
+	allow the forwarded traffic
+	sudo iptables -A FORWARD -p tcp -d 192.168.1.100 --dport 80 -j ACCEPT
+	enable NAT for outgoing packets
+	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
 SSH PROXY REDIRECTION
 
-SOCKS Proxy via ssh
-ssh -D 1080 -C -q -N user@ssh_server
-Using the Proxy
-curl --socks5 127.0.0.1:1080 http://example.com
-port forwarding
-ssh -L 8080:target_host:80 user@ssh_server
-ssh proxy command (for chaining ssh througha proxy server)
-.ssh/config
-	Host target_host
-  		ProxyCommand ssh -q -W %h:%p user@ssh_server
+	SOCKS Proxy via ssh
+	ssh -D 1080 -C -q -N user@ssh_server
+	Using the Proxy
+	curl --socks5 127.0.0.1:1080 http://example.com
+	port forwarding
+	ssh -L 8080:target_host:80 user@ssh_server
+	ssh proxy command (for chaining ssh througha proxy server)
+	.ssh/config
+		Host target_host
+	  		ProxyCommand ssh -q -W %h:%p user@ssh_server
 
 PING
 
-ping command relies on ICMP to check whether a device on a network is reachable and to measure round-trip time
+	ping command relies on ICMP to check whether a device on a network is reachable and to measure round-trip time
 
-ping uses ICMP Echo Request and ICMP Echo Reply
-sometimes firewalls have ICMP blocked
-ping <ip address> 
+	ping uses ICMP Echo Request and ICMP Echo Reply
+	sometimes firewalls have ICMP blocked
+	
+	ping <ip address> 
 
 TRACEROUTE
-network diagnostic tool that traces the path packets take from your computer to a remote host across an IP network. 
-traceroute <options> <ip/fqdn>
- SAT Hops
-	sat hops can be seen around 500.000 ms
-	can compromise us if a satellite is being utilized due to us leaving behind our footprints
+
+	network diagnostic tool that traces the path packets take from your computer to a remote host across an IP network. 
+	traceroute <options> <ip/fqdn>
+	 SAT Hops
+		sat hops can be seen around 500.000 ms
+		can compromise us if a satellite is being utilized due to us leaving behind our footprints
 
 DNS
-the computer sends a DNS query to the DNS server. The DNS server checks its stored cache before asking another dns server. 
-If you already visited a website, your computer stores the results in its local DNS cache. The computer looks at this cache before conducting a query to quickly access the website.
-dns reverse lookup: uses an ip address to resolve a FQDN rather than a FQDN to resolve an IP
-dig
-dns query tool
-dig google.com
-dig google.com MX
-dig @8.8.8.8 google.com
-nslookup 
-nslookup google.com
-nslookup -query=mx google.com
+	the computer sends a DNS query to the DNS server. The DNS server checks its stored cache before asking another dns server. 
+	If you already visited a website, your computer stores the results in its local DNS cache. The computer looks at this cache before conducting a query to quickly access the website.
+	dns reverse lookup: uses an ip address to resolve a FQDN rather than a FQDN to resolve an IP
+	dig
+	dns query tool
+	dig google.com
+	dig google.com MX
+	dig @8.8.8.8 google.com
+	nslookup 
+	nslookup google.com
+	nslookup -query=mx google.com
 
 ARP
 
-devices on same local network
-translates an IP address into a physical mac address
-arp cache
-arp -a
+	devices on same local network
+	translates an IP address into a physical mac address
+	arp cache
+	arp -a
 
 NMAP
 
-nmap -sS -Pn -T4 -O <ip address/xx> -oA
+	nmap -sS -Pn -T4 -O <ip address/xx> -oA
 
-banner grab
-nmap –script=banner <ip address> 
+	banner grab
+	nmap –script=banner <ip address> 
 
--A service version, os deteciton, scrip scanning, tracerout
--sV service version
--O os detection
+	-A service version, os deteciton, scrip scanning, tracerout
+	-sV service version
+	-O os detection
 
 tunnels
-ssh -L 9999:192.168.1.100:22 user@ssh.server.com
+	ssh -L 9999:192.168.1.100:22 user@ssh.server.com
 
 TTL’S
 
 
+	Windows (7/8/10/11) 128
+	Linux (Ubuntu, Debian, etc.) 64
+	macOS 64
+	FreeBSD	64
+	Cisco Devices (iOS) 255
+	Solaris	255
+	AIX 64
+	Android	64
+	iOS (Apple Mobile Devices) 64
 
 BANNER GRAB
 
-nc <ip address> <port>
+	nc <ip address> <port>
+	nmap –script=banner <ip address> 
 
 PACKET SNIFFING
 
-wireshark
+	wireshark
 
-tcpdump
-tcpdump src <ip address>
-tcpdump dst <ipaddress>
-any traffic to or from a spcific ip
-tcpdump host <ipaddress>
-tcpdump port <port>
-tcpdump net <ipaddress/24>
-tcpdump src host 192.168.1.1 and src port 80
-tcpdump -i eth0
-write to a pcap
-tcpdump -w capture_file.pcap
-read a saved capture
-tcpdump -r capture_file.pcap
-tcpdump src 192.168.1.1 and port 80
-tcpdump 'tcp[tcpflags] & tcp-syn != 0'
-tcpdump port 80 or port 443
+	tcpdump
+	tcpdump src <ip address>
+	tcpdump dst <ipaddress>
+	
+	any traffic to or from a spcific ip
+
+	tcpdump host <ipaddress>
+	tcpdump port <port>
+	tcpdump net <ipaddress/24>
+	tcpdump src host 192.168.1.1 and src port 80
+	tcpdump -i eth0
+
+	write to a pcap
+	tcpdump -w capture_file.pcap
+
+	read a saved capture
+	tcpdump -r capture_file.pcap
+	tcpdump src 192.168.1.1 and port 80
+	tcpdump 'tcp[tcpflags] & tcp-syn != 0'
+	tcpdump port 80 or port 443
