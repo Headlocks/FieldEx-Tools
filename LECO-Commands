@@ -309,22 +309,38 @@ VPN’S
 SSH REDIRECT
 	
 	local
-	ssh -L local_port:remote_host:remote_port user@ssh_server
-	ssh -L 8080:remote_host:80 user@ssh_server
+	ssh -L local_port:remote_ip:remote_port user@ssh_server
+	ssh -L 8080:remote_ip:80 user@ssh_server
 
 	remote
 	ssh -R remote_port:local_host:local_port user@ssh_server
 	ssh -R 9090:localhost:3000 user@ssh_server
 
 
+SSH MultiPlexing
+
+	ssh -MS /tmp/T1 user@ip -p 22 
+
+	New Terminal
+	ssh -S /tmp/T1 -O forward -L 9000:ip:22 dummy
+	ssh -MS /tmp/T2 user@localhost -p 9000
+
+	New Terminal
+	ssh -S /tmp/T2 -O forward -L 9001:ip:22 dummy
+	ssh -MS /tmp/T3 user@localhost -p 9001
+
+	Proxychains
+	ssh -S /tmp/T2 -O forward -L 9002:ip:22 dummy -D 9050
+
+
 IPTABLES
 
 	port forwarding
 	forward incoming port on the external device to an internal ip address and port
-	sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j DNAT --to-destination 192.168.1.100:80
+	sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j DNAT --to-destination ip:80
 	
 	allow the forwarded traffic
-	sudo iptables -A FORWARD -p tcp -d 192.168.1.100 --dport 80 -j ACCEPT
+	sudo iptables -A FORWARD -p tcp -d ip --dport 80 -j ACCEPT
 	
 	enable NAT for outgoing packets
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
