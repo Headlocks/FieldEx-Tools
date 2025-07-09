@@ -240,7 +240,7 @@ IP / IFCONFIG
 	Ifconfig eth0 -promisc 
 
 
-NFS (Network File System)
+NFS (Network File System) (double check and work on this)
 	
 	A protocol that allows file systems to be shared over a network. It enables a computer (the client) to access files on a remote computer (the server) as if they were on its local system. NFS is common on linux for sharing files between computers.
 	NFS Server: the machine sharing its file system
@@ -273,13 +273,18 @@ NFS (Network File System)
 
 RUNNING A SCRIPT
 
+	script header
+		#!/usr/bin/env python3
+		#!/bin/bash
+
 	Chmod +x <file name>
 	./<script>
+
 	Or 
+
 	Python3 <script.py>
-		#!/usr/bin/env python3
 	Bash <script.sh>
-		#!/bin/bash
+
 
 MARKUP LANGUAGE
 
@@ -297,7 +302,7 @@ MARKUP LANGUAGE
 	</html>
 
 
-VPN’S
+VPN’S (Work on this)
 
 	OpenVPN
 	sudo apt install openvpn
