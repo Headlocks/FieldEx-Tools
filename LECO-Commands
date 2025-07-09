@@ -125,7 +125,7 @@ CRYPTOGRAPHIC TOOLS
 
 	OPENSSL
 	Open source toolkit that implements the SSL (Secure Sockets Layer) and TSL (Transport Layer Security) protocols, along with cryptographic functions and algorithms.
-Generates certificates, encryption keys, and perform encryption/decryption
+	Generates certificates, encryption keys, and perform encryption/decryption
 
 	Generate a private key
 	openssl genpkey -algorithm RSA -out private.key
@@ -306,16 +306,17 @@ VPN’S
 	sudo apt install wireguard
 
 
-SSH REDIRECT
-	
-	local
-	ssh -L local_port:remote_ip:remote_port user@ssh_server
-	ssh -L 8080:remote_ip:80 user@ssh_server
+SSH Tunnel
 
-	remote
-	ssh -R remote_port:local_host:local_port user@ssh_server
-	ssh -R 9090:localhost:3000 user@ssh_server
+	standard
+	ssh debian@ip
 
+	tunnel
+	ssh -L 9001:localhost:22 user@ip
+	ssh debian@localhost -p 9001
+
+	port forwrad
+	ssh -L 53:ip:53 user@ip
 
 SSH MultiPlexing
 
@@ -345,9 +346,6 @@ IPTABLES
 	enable NAT for outgoing packets
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
-SSH MultiPlexing
-
-	insert notes
 
 
 PING
@@ -375,6 +373,7 @@ DNS
 	the computer sends a DNS query to the DNS server. The DNS server checks its stored cache before asking another dns server. 
 	If you already visited a website, your computer stores the results in its local DNS cache. The computer looks at this cache before conducting a query to quickly access the website.
 	dns reverse lookup: uses an ip address to resolve a FQDN rather than a FQDN to resolve an IP
+
 	dig
 	dns query tool
 	dig google.com
@@ -403,9 +402,6 @@ NMAP
 	-A service version, os deteciton, scrip scanning, tracerout
 	-sV service version
 	-O os detection
-
-	tunnels
-	ssh -L 9999:192.168.1.100:22 user@ssh.server.com
 
 
 TTL’S
