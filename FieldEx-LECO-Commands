@@ -119,6 +119,7 @@ ZIPPING/COMPRESSION
 
 	gunzip file.txt.gz
 
+
 CRYPTOGRAPHIC TOOLS
 
 	OPENSSL
@@ -168,6 +169,7 @@ Generates certificates, encryption keys, and perform encryption/decryption
 	gpg --import public.key 
 
 
+
 PERMISSIONS
 
 	Chmod (change mode) change permissions of a file or a directory. 
@@ -197,6 +199,7 @@ PERMISSIONS
 	chown 1001:1001 file.txt
 
 
+
 SU / SUDO
 	
 	su (substitute User)
@@ -210,6 +213,7 @@ SU / SUDO
 	Can execute a command as the root user or another user, as specificed in /etc/sudoers file. 
 	sudo nano file.txt
 	Sudo –u john ls /home/john
+
 
 
 IP / IFCONFIG
@@ -233,6 +237,7 @@ IP / IFCONFIG
 	Ifconfig eth0
 	Ifconfig eth0 promisc (enable/disable promiscuous mode)
 	Ifconfig eth0 -promisc 
+
 
 NFS (Network File System)
 	
@@ -262,6 +267,7 @@ NFS (Network File System)
 	unmounting
 	Sudo umount /mnt/nfs
 	Sudo umount –f /mnt/nfs
+
 
 RUNNING A SCRIPT
 
@@ -297,6 +303,7 @@ VPN’S
 	wireguard
 	sudo apt install wireguard
 
+
 SSH REDIRECT
 	
 	local
@@ -307,28 +314,23 @@ SSH REDIRECT
 	ssh -R remote_port:local_host:local_port user@ssh_server
 	ssh -R 9090:localhost:3000 user@ssh_server
 
+
 IPTABLES
 
 	port forwarding
 	forward incoming port on the external device to an internal ip address and port
 	sudo iptables -t nat -A PREROUTING -p tcp --dport 8080 -j DNAT --to-destination 192.168.1.100:80
+	
 	allow the forwarded traffic
 	sudo iptables -A FORWARD -p tcp -d 192.168.1.100 --dport 80 -j ACCEPT
+	
 	enable NAT for outgoing packets
 	sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 
-SSH PROXY REDIRECTION
+SSH MultiPlexing
 
-	SOCKS Proxy via ssh
-	ssh -D 1080 -C -q -N user@ssh_server
-	Using the Proxy
-	curl --socks5 127.0.0.1:1080 http://example.com
-	port forwarding
-	ssh -L 8080:target_host:80 user@ssh_server
-	ssh proxy command (for chaining ssh througha proxy server)
-	.ssh/config
-		Host target_host
-	  		ProxyCommand ssh -q -W %h:%p user@ssh_server
+	insert notes
+
 
 PING
 
@@ -337,7 +339,8 @@ PING
 	ping uses ICMP Echo Request and ICMP Echo Reply
 	sometimes firewalls have ICMP blocked
 	
-	ping <ip address> 
+	ping<ip address> 
+
 
 TRACEROUTE
 
@@ -346,6 +349,7 @@ TRACEROUTE
 	 SAT Hops
 		sat hops can be seen around 500.000 ms
 		can compromise us if a satellite is being utilized due to us leaving behind our footprints
+
 
 DNS
 	the computer sends a DNS query to the DNS server. The DNS server checks its stored cache before asking another dns server. 
@@ -360,12 +364,14 @@ DNS
 	nslookup google.com
 	nslookup -query=mx google.com
 
+
 ARP
 
 	devices on same local network
 	translates an IP address into a physical mac address
 	arp cache
 	arp -a
+
 
 NMAP
 
@@ -378,11 +384,11 @@ NMAP
 	-sV service version
 	-O os detection
 
-tunnels
+	tunnels
 	ssh -L 9999:192.168.1.100:22 user@ssh.server.com
 
-TTL’S
 
+TTL’S
 
 	Windows (7/8/10/11) 128
 	Linux (Ubuntu, Debian, etc.) 64
@@ -394,14 +400,16 @@ TTL’S
 	Android	64
 	iOS (Apple Mobile Devices) 64
 
+
 BANNER GRAB
 
 	nc <ip address> <port>
 	nmap –script=banner <ip address> 
 
+
 PACKET SNIFFING
 
-	wireshark
+	wireshark &
 
 	tcpdump
 	tcpdump src <ip address>
