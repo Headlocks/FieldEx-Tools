@@ -8,6 +8,7 @@ Installing SSH
 	systemctl start ssh
 
 Configuring SSH
+
 	cat /etc/ssh/sshd_config
 	sudo ufw allow 22/tcp
 
