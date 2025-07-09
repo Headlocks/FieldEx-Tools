@@ -1,46 +1,45 @@
-A Host-Based Security Solution refers to security measures implemented directly on individual devices (hosts), such as servers, workstations, laptops, and mobile devices, to protect them from cyber threats. Unlike network-based security solutions, which monitor and protect the entire network, host-based solutions are specifically focused on securing the endpoint or device itself. These solutions are typically software-based and work to detect, block, and respond to potential threats in real-time or on-demand.
-HIDS is useful for detecting suspicious behavior on individual hosts, but it does not actively prevent attacks and may generate false alarms.
-HIPS goes a step further by actively preventing attacks, making it a more proactive solution but with potential performance costs and configuration challenges.
-Anti-Virus is a staple in malware protection, especially for known threats, but it may struggle with new, unknown malware unless updated regularly.
-An Enterprise Security Solution is a comprehensive suite of security tools and systems designed to protect an organization’s entire IT infrastructure, including its networks, servers, endpoints, and applications. These solutions are built to defend against a wide array of cyber threats, such as malware, data breaches, and denial-of-service (DoS) attacks, while ensuring that critical business functions remain operational.
-Enterprise security often involves network-based security systems, which monitor and protect network traffic across the organization, as well as host-based solutions that protect individual devices. In this context, three common components are NIDS, NIPS, and Anti-Virus (which can be used at the network level as well as on individual devices).
-NIDS focuses on detecting network-based threats and provides visibility across the entire network, but cannot actively prevent or mitigate those threats.
-NIPS takes the capabilities of NIDS a step further by actively blocking malicious traffic, offering proactive defense but introducing potential network latency and false positives.
-Anti-virus solutions offer endpoint protection by detecting and removing known malware but struggle with emerging threats and may slow down endpoint performance.
-Benefits of SSH:
-Strong encryption and secure authentication for remote system management.
-Supports file transfers (SFTP, SCP), port forwarding, and remote command execution.
-Cross-platform compatibility and centralized access control.
-Risks of SSH:
-Vulnerable to brute-force attacks if weak passwords are used.
-Security risks with poor SSH key management or key theft.
-Potential for man-in-the-middle attacks if server verification is ignored.
-Misconfiguration leading to excessive permissions or unrestricted access.
-SHELL COMMANDS
-Sending shell commands over unencrypted lines exposes an organization to significant security risks, everything shown in plain text and including:
-Eavesdropping (interception of sensitive data)
-Man-in-the-Middle (MitM) Attacks (manipulation of commands)
-Credential Hijacking (compromise of usernames and passwords)
-Tampering (modification of commands or responses)
-Replay Attacks (reusing captured commands)
+LECO COMMANDS
 
-SSHD CONFIGURING
+Installing SSH
+
 	Sudo apt install ssh
-	Service ssh status
-	Service ssh start
-	/etc/ssh/sshd_config
-		permitrootlogin no
-		pubkeyauthentication – remove the comment and to say yes
-		password authentication – no
-		could change port number and remove x11
-		sudo service ssh restart
+	systemctl status ssh
+	systemctl enable ssh
+	systemctl start ssh
+
+Configuring SSH
+	cat /etc/ssh/sshd_config
 	sudo ufw allow 22/tcp
+
+Creating SSH Keys
+
+	chmod 700 .ssh
+
 	cd .ssh
+
+	touch authorized_keys
+	chmod 600 authorized_keys
+
 	ssh-keygen -t rsa -b 4096
-	cp name.pub key created
-	scp name.pub user@ip:/home/user/.ssh/authorized_keys/name.pub:
-	on target public profile needs .ssh/authorized_keys/
-	ssh -i .ssh/vpn (not the .pub) user@ip (-p ssh port)
+
+	creates a id_rsa and id_rsa.pub
+
+	chmod 600 id_rsa
+	chmod 644 (default) id_rsa.pub
+
+	send public key to target clients authorized_keys file. the target needs to have this file created under .ssh
+	create the file if it does not exit
+
+	ssh user@ip
+	cd .ssh
+	touch authorized_keys
+	chmod 600 authorized_keys
+
+	send key to target IP
+
+	ssh-copy-id user@ip
+
+	ssh user@ip
 	
 STANDARD SITUATIONAL AWARENESS COMMANDS/ DEFAULT SURVEY
 LINUX	
