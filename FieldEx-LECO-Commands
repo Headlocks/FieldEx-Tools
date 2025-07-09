@@ -1,4 +1,4 @@
-LECO COMMANDS
+LECO Commands
 
 Installing SSH
 
@@ -41,147 +41,160 @@ Creating SSH Keys
 
 	ssh user@ip
 	
-STANDARD SITUATIONAL AWARENESS COMMANDS/ DEFAULT SURVEY
+Situational Awareness
+
 LINUX	
-history
-sysinfo	
-uname -a
-hostnamectl
-ifconfig
-ip a
-netstat -tuln
-ps -elf / ps aux
-whoami
-w
-who
-last
-lastlog
-sudo ufw status
-tail -f /var/log/syslog
-sudo iptables -L
+	history
+	sysinfo	
+	uname -a
+	hostnamectl
+	ifconfig
+	ip a
+	netstat -tuln
+	ps -elf / ps aux
+	whoami
+	w
+	who
+	last
+	lastlog
+	sudo ufw status
+	tail -f /var/log/syslog
+	sudo iptables -L
 
 WINDOWS
-history
-systeminfo
-hostname
-ipconfig /all
-netstat -ano
-tasklist
-whoami
+	history
+	systeminfo
+	hostname
+	ipconfig /all
+	netstat -ano
+	tasklist
+	whoami
 
 SCP (Secure Copy Protocol)
 
-SCP is a network protocol used to securely transfer files between hosts on a network. It uses SSH (Secure Shell) to provide a secure channel for communication, ensuring that the files are encrypted.
+	From Client
+	Scp filename user@ipaddress:/home/kali/location/<file name>
 
-Scp filename user@ipaddress:/home/kali/location/<file name>
-scp user@ipaddress:/home/kali/location/<file name> .
-
-Positive: has encryption
-Negative: slower due to encryption and decryption
+	From Target
+	scp user@ipaddress:/home/kali/location/<file name> .
 
 
 FTP (File Transfer Protocol)
 
-Ftp <ip address>
-Positive: faster than scp with less overhead
-Negative: No encryption
+	Ftp <ip address>
 
 HASHES
 
-Md5sum <file>
-Generates MD5 (Message digest algorithm 5) hash value. 128-bit (16 byte) output, represented in 32-character hexadecimal
+	Md5sum <file>
+
 	
-Sha1sum <file>
-Generates a sha-1 (secure hash algorithm 1) hash value.l produces a 160-bit (20-byte) hash value, displayed as 40-character hexadecimal.
+	Sha1sum <file>
+
 
 ZIPPING/COMPRESSION
 
-Tar (tape archive) command is used for archiving files. Can combine multiple files into a single file (archive). It can also compress the archive file.
-Without compression
-Tar –cf archive.tar file.txt file2.txt
-With compression	
-Tar –czf archive.tar.gz file1.txt file2.txt 
-Extract an archive
-Tar –xf archive.tar
-Extract a compressed archive
-Tar –xzf archive.tar.gz
-List contents
-Tar –tf archive.tar
+	Without compression
+	Tar –cf archive.tar file.txt file2.txt
 
-Zip command is used for compresssing files and directories into a single .zip archive. Unlike tar, the zip command compresses files by default.
-Zip archive.zip file1.txt file2.txt
-Zip –r (recursvie) zip -9 (maximum compression) zip –e (add zip password), unzip –l (list files)
-Unzip archive.zip
+	With compression	
+	Tar –czf archive.tar.gz file1.txt file2.txt 
+
+	Extract an archive
+	Tar –xf archive.tar
+	
+	Extract a compressed archive
+	Tar –xzf archive.tar.gz
+
+	List contents
+	Tar –tf archive.tar
+
+
+	Zip archive.zip file1.txt file2.txt
+	
+	Zip –r (recursvie) zip -9 (maximum compression) zip –e (add zip password), unzip –l (list files)
+
+	Unzip archive.zip
+
+	gzip file.txt
+
+	gunzip file.txt.gz
 
 CRYPTOGRAPHIC TOOLS
 
-OPENSSL
+	OPENSSL
 	Open source toolkit that implements the SSL (Secure Sockets Layer) and TSL (Transport Layer Security) protocols, along with cryptographic functions and algorithms.
 Generates certificates, encryption keys, and perform encryption/decryption
-Generate a private key
-openssl genpkey -algorithm RSA -out private.key
-Generate a public key from a private key
-openssl rsa -pubout -in private.key -out public.key
-Encrypt a file
-openssl enc -aes-256-cbc -in file.txt -out file.enc
-Decrypt a file
-openssl enc -d -aes-256-cbc -in file.enc -out file.txt
-2. GPG (GNU Privacy Guard)
 
-GPG (or GnuPG) is an open-source implementation of the OpenPGP standard (RFC 4880). GPG is primarily used for encrypting and signing data to provide confidentiality, integrity, and authenticity. It is often used for email encryption and file signing, enabling secure communication and data storage.
-GPG uses a public-private key system, where users generate key pairs (one public and one private key) to securely encrypt and sign messages or files.
-Primary Uses of GPG:
-Email Encryption: Encrypts emails to ensure only the intended recipient can read them.
-File Encryption and Signing: Encrypts and signs files, ensuring the confidentiality and integrity of the file.
-Public Key Infrastructure: Allows users to share their public keys, and others can encrypt data for them, knowing only the private key can decrypt it.
-Digital Signatures: GPG is widely used for signing files and messages to prove authenticity and verify that they haven’t been tampered with.
-Common GPG Commands:
-Generate a Key Pair (Public & Private):
-gpg --gen-key
-Generates a new GPG key pair (public and private keys).
-List Keys in Keyring:
-gpg --list-keys
-Displays all the public keys stored in your keyring.
-Encrypt a File with a Recipient’s Public Key:
-gpg --encrypt --recipient recipient@example.com file.txt 
-Encrypts file.txt using the recipient's public key.
-Decrypt a File with Your Private Key:
-gpg --decrypt file.txt.gpg
-Decrypts file.txt.gpg using your private key.
-Sign a File:
-gpg --sign file.txt
-Signs the file file.txt to confirm its authenticity.
-Verify a Signed File:
-gpg --verify file.txt.sig file.txt
-Verifies the signature on file.txt using the .sig file.
-Export a Public Key:
-gpg --export -a recipient@example.com > public.key 
-Exports your public key in ASCII-armored format.
-Import a Public Key:
-gpg --import public.key 
-Imports a public key into your keyring.
+	Generate a private key
+	openssl genpkey -algorithm RSA -out private.key
+
+	Generate a public key from a private key
+	openssl rsa -pubout -in private.key -out public.key
+
+	Encrypt a file
+	openssl enc -aes-256-cbc -in file.txt -out file.enc
+
+	Decrypt a file
+	openssl enc -d -aes-256-cbc -in file.enc -out file.txt
+
+	GPG (GNU Privacy Guard)
+
+	GPG (or GnuPG) is an open-source implementation of the OpenPGP standard (RFC 4880). GPG is primarily used for encrypting and signing data to provide confidentiality, integrity, and authenticity. It is often used for email encryption and file signing, enabling secure communication and data storage.
+	GPG uses a public-private key system, where users generate key pairs (one public and one private key) to securely encrypt and sign messages or files.
+
+	Generate a Key Pair (Public & Private):
+	gpg --gen-key
+
+	List Keys in Keyring:
+
+	gpg --list-keys
+
+	Encrypt a File with a Recipient’s Public Key:
+	gpg --encrypt --recipient recipient@example.com file.txt 
+
+	Decrypt a File with Your Private Key:
+	gpg --decrypt file.txt.gpg
+
+	Sign a File:
+	gpg --sign file.txt
+
+	Verify a Signed File:
+	gpg --verify file.txt.sig file.txt
+
+	Export a Public Key:
+	gpg --export -a recipient@example.com > public.key 
+
+	Import a Public Key:
+	gpg --import public.key 
+
 
 PERMISSIONS
-Chmod (change mode) change permissions of a file or a directory. 
-4 Read, 2 Write, 1 eXecute
-Owner (User), Group, Others
-chmod u+x file.txt
-chmod 755 file.txt
-chmod 777 file.txt
-chmod +x script.sh
-chmod -R 755 directory
 
-Chown
+	Chmod (change mode) change permissions of a file or a directory. 
+	4 Read, 2 Write, 1 eXecute
+	Owner (User), Group, Others
+
+	chmod u+x file.txt
+	chmod 755 file.txt
+	chmod 777 file.txt
+	chmod +x script.sh
+	chmod -R 755 directory
+
+	Chown
 	Used to change the owneriship of a file or a directory. Modify8 the user and/or group associated with a file or directory.
 
-Change ownership to a specific user
-Chown alice file.txt
-Change ownership to a specific user and group
-Chown alice:staff file.txt
-Change only the group of a file
-Chown :staff file.txt
-chown -R alice:staff /home/alice
-chown 1001:1001 file.txt
+	Change ownership to a specific user
+	Chown alice file.txt
+
+	Change ownership to a specific user and group
+	Chown alice:staff file.txt
+
+	Change only the group of a file
+	Chown :staff file.txt
+
+	chown -R alice:staff /home/alice
+
+	chown 1001:1001 file.txt
 
 
 SU / SUDO
