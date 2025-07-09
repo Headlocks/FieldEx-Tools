@@ -249,25 +249,26 @@ NFS (Network File System)
 	“exports” is a file system accessible by the clients. This is done by modifying /etc/exports on the sserver to specify which directories are shared and which clients can access them.
 
 	SERVER SIDE
-	Sudo apt install nfs-kernel-server
-	Sudo nano /etc/exports
-	/srv/nfs 192.168.1.0/24(rw,synce,no_subtree_check)
-	Sudo exportfs –a
-	Sudo systemctl start nfs-kernel-server
-	Sudo systemctl enable nfs-kernel-server
-	Sudo exportfs –v (check exported directories for verification)
+		Sudo apt install nfs-kernel-server
+		Sudo nano /etc/exports
+		/srv/nfs ip/cidr(rw,synce,no_subtree_check)
+		Sudo exportfs –a
+		Sudo systemctl start nfs-kernel-server
+		Sudo systemctl enable nfs-kernel-server
+		Sudo exportfs –v (check exported directories for verification)
 
 	CLIENT SIDE
-	Sudo apt install nfs-common
-	Sudo mkdir –p /mnt/nfs
-	Sudo mount 192.168.1.000:/srv/nfs /mnt/nfs
-	Mount | grep nfs (check the mounted NFS share) or df –h
+		Sudo apt install nfs-common
+		Sudo mkdir –p /mnt/nfs
+		Sudo mount ip:/srv/nfs /mnt/nfs
+		Mount | grep nfs (check the mounted NFS share) or df –h
+	
 	Automating
-	Sudo nano /etc/fstab
-	192.168.1.100:/srv/nfs /mnt/nfs nfs defaults 0 0
-	unmounting
-	Sudo umount /mnt/nfs
-	Sudo umount –f /mnt/nfs
+		Sudo nano /etc/fstab
+		ip:/srv/nfs /mnt/nfs nfs defaults 0 0
+		unmounting
+		Sudo umount /mnt/nfs
+		Sudo umount –f /mnt/nfs
 
 
 RUNNING A SCRIPT
@@ -346,8 +347,10 @@ PING
 TRACEROUTE
 
 	network diagnostic tool that traces the path packets take from your computer to a remote host across an IP network. 
+	
 	traceroute <options> <ip/fqdn>
-	 SAT Hops
+	
+	SAT Hops
 		sat hops can be seen around 500.000 ms
 		can compromise us if a satellite is being utilized due to us leaving behind our footprints
 
