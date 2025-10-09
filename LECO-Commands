@@ -329,15 +329,15 @@ SSH MultiPlexing
 	ssh -MS /tmp/T1 user@ip -p 22 
 
 	New Terminal
-	ssh -S /tmp/T1 -O forward -L 9000:ip:22 dummy
+	ssh -S /tmp/T1 -O forward -L 9000:T2:22 dummy
 	ssh -MS /tmp/T2 user@localhost -p 9000
 
 	New Terminal
-	ssh -S /tmp/T2 -O forward -L 9001:ip:22 dummy
+	ssh -S /tmp/T2 -O forward -L 9001:T3:22 dummy
 	ssh -MS /tmp/T3 user@localhost -p 9001
 
 	Proxychains
-	ssh -S /tmp/T2 -O forward -L 9002:ip:22 dummy -D 9050
+	ssh -S /tmp/T2 -O forward -L 9002:T2:22 dummy -D 9050
 
 
 IPTABLES
