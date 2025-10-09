@@ -212,6 +212,7 @@ SU / SUDO
 	Sudo (superuser do)
 
 	Can execute a command as the root user or another user, as specificed in /etc/sudoers file. 
+  sudo -l
 	sudo nano file.txt
 	Sudo –u john ls /home/john
 
@@ -360,7 +361,7 @@ PING
 	ping uses ICMP Echo Request and ICMP Echo Reply
 	sometimes firewalls have ICMP blocked
 	
-	ping<ip address> 
+	ping <ip address> 
 
 
 TRACEROUTE
@@ -402,7 +403,7 @@ NMAP
 	nmap -sS -Pn -T4 -O <ip address/xx> -oA
 
 	banner grab
-	nmap –script=banner <ip address> 
+	nmap –-script=banner <ip address> 
 
 	-A service version, os deteciton, scrip scanning, tracerout
 	-sV service version
@@ -425,7 +426,7 @@ TTL’S
 BANNER GRAB
 
 	nc <ip address> <port>
-	nmap –script=banner <ip address> 
+	nmap -–script=banner <ip address> 
 
 
 PACKET SNIFFING
