@@ -380,11 +380,13 @@ DNS
 	If you already visited a website, your computer stores the results in its local DNS cache. The computer looks at this cache before conducting a query to quickly access the website.
 	dns reverse lookup: uses an ip address to resolve a FQDN rather than a FQDN to resolve an IP
 
-	dig
 	dns query tool
+
+  dig
 	dig google.com
 	dig google.com MX
 	dig @8.8.8.8 google.com
+
 	nslookup 
 	nslookup google.com
 	nslookup -query=mx google.com
@@ -395,6 +397,7 @@ ARP
 	devices on same local network
 	translates an IP address into a physical mac address
 	arp cache
+
 	arp -a
 
 
